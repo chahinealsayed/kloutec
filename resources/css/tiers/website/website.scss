@@ -1,0 +1,16 @@
+@import "@scss/startup";
+
+@layer layout {
+  @import "sections/main-layout";
+  @import "sections/content-real-estate";
+  @import "sections/sidemenu";
+  @import "sections/home";
+  @import "sections/swiper";
+  @import "sections/about-us";
+  @import "sections/talk";
+  @import "sections/services";
+  @import "sections/contact";
+  @import "sections/projects";
+  @import "sections/careers";
+  @import "sections/careerdetail";
+}

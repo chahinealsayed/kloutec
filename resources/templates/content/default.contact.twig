@@ -1,0 +1,63 @@
+{% content "cms.contents.default.contact" %}
+<section class="contact">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="lined-text">
+					<hr>
+					<h6>Let's Talk Now</h6>
+				</div>
+				<div>
+					<p class="title">{{content.local.title}}</p>
+				</div>
+			</div>
+			<div class="col-md-6"></div>
+		</div>
+		<div class="row">
+			<div class="socials">
+				<div class="email">
+					<img src="public/images/emaill.svg" alt="">
+					<div class="d-flex flex-column">
+						<a target="_blank" class="text text-primary" href="mailto:{{'social.email' | setting('#')}}">{{'social.email' | setting('#')}}</a>
+					</div>
+				</div>
+				{% if 'social.phone' | setting('#') != null %}
+					<div class="location">
+						<img src="public/images/location-blue.svg" alt="">
+						<div class="d-flex flex-column">
+							<a target="_blank" href="{{'map.link' | setting('#')}}">
+								<p class="text-primary">{{'location.street' | setting('#')}},</p>
+								<p class="text-primary">{{'location.level' | setting('#')}},{{'location.office' | setting('#')}}</p>
+							</a>
+						</div>
+					</div>
+				{% else %}
+					<div class="location" style="margin-left: auto;margin-right:auto;">
+						<img src="public/images/location-blue.svg" alt="">
+						<div class="d-flex flex-column">
+							<a target="_blank" href="{{'map.link' | setting('#')}}">
+								<p class="text-primary">{{'location.street' | setting('#')}},</p>
+								<p class="text-primary">{{'location.level' | setting('#')}},{{'location.office' | setting('#')}}</p>
+							</a>
+						</div>
+					</div>
+				{% endif %}
+
+				{% if 'social.phone' | setting('#') != null %}
+					<div class="telephone">
+						<img src="public/images/phone-blue.svg" alt="">
+						<p class="text-primary">
+							<a target="_blank" href="https://wa.me/{{'social.phone' | setting('#')  | split(' ') | join('')}}">
+								{{'social.phone' | setting('#')}}</a>
+						</p>
+					</div>
+					{% else %}
+				{% endif %}
+			</div>
+		</div>
+		<div class="box1"></div>
+		<div class="box2"></div>
+	</div>
+</section>
+{% content "cms.contents.default.talk.2" %}
+{{'website/contactusform' | vue({title:content.local.title,subtitle:content.local.subtitle1,longitude:'map.longitude' | setting('#'),latitude:'map.latitude' | setting('#'),embed:'map.embed' | setting('#')})}}{% endcontent %}{% endcontent %}

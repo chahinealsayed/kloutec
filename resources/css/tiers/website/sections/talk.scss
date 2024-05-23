@@ -1,0 +1,189 @@
+.talk {
+  padding-top: 4rem;
+  @media (max-width: 767px) {
+    padding-top: 2rem;
+  }
+  .container {
+    position: relative;
+    .row {
+      .col-md-6 {
+        .lined-text {
+          display: flex;
+          align-items: center;
+          //   padding-top: 2rem;
+          padding-bottom: 4rem;
+          h6 {
+            color: $secondary;
+            margin: 0;
+            font-weight: 400;
+          }
+          hr {
+            width: 20px;
+            border-top: 2px solid !important;
+            color: $secondary;
+          }
+        }
+        .title {
+          color: $primary;
+          font-size: 80px;
+          font-style: normal;
+          line-height: 0.7;
+          font-weight: 900;
+          @media (max-width: 767px) {
+            text-align: center;
+            font-size: 40px;
+          }
+        }
+        .excerpt {
+          color: $primary;
+          @media (max-width: 767px) {
+            padding-top: 4rem;
+            text-align: center;
+          }
+        }
+        .arrow-btn {
+          position: relative;
+          width: fit-content;
+          @media (max-width: 767px) {
+            margin: auto;
+          }
+          .dream {
+            font-size: 65px;
+            border-radius: 65px;
+            //   padding: 0px 25px;
+            width: 300px;
+            color: $white;
+            line-height: 1.2;
+            font-weight: 900;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @media (max-width: 767px) {
+              font-size: 40px;
+            }
+          }
+          .img {
+            position: absolute;
+            bottom: -60%;
+            width: 100%;
+            text-align: center;
+            @media (max-width: 767px) {
+              bottom: -70%;
+            }
+            img {
+              width: 30px;
+            }
+          }
+        }
+
+        .animate {
+          transform: translateY(100%);
+          display: none;
+          &.active1 {
+            display: block;
+            animation: moveWord 2s forwards;
+          }
+        }
+
+        @keyframes moveWord {
+          0% {
+            transform: translateY(100%);
+          }
+          25% {
+            transform: translateY(0);
+          }
+          60% {
+            transform: translateY(0);
+          }
+          70% {
+            transform: translateY(0);
+          }
+          80% {
+            transform: translateY(0);
+          }
+          90% {
+            transform: translateY(0);
+          }
+          100% {
+            transform: translateY(-100%);
+          }
+        }
+        .dream {
+          overflow: hidden;
+        }
+      }
+    }
+    .box1 {
+      position: absolute;
+      top: -20%;
+      right: -20%;
+      z-index: -1;
+      width: 400px;
+      height: 300px;
+      border-radius: 300px;
+      background: #5cd180;
+      filter: blur(70px);
+      @media (max-width: 767px) {
+        display: none;
+      }
+    }
+
+    .box2 {
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      z-index: 1;
+      width: 200px;
+      height: 200px;
+      border-radius: 200px;
+      background: #d3ffe1;
+      filter: blur(40px);
+      @media (max-width: 767px) {
+        display: none;
+      }
+    }
+  }
+}
+
+.form {
+  padding-top: 6rem;
+  padding-left: 8rem;
+  @media (max-width: 767px) {
+    padding-left: 0;
+    padding-top: 4rem;
+  }
+  .container {
+    position: relative;
+    .row {
+      .col-md-6 {
+        .cont {
+          width: 60%;
+
+          @media (max-width: 767px) {
+            width: 100%;
+            text-align: center;
+          }
+          .title {
+            font-weight: 800;
+            font-size: 30px;
+            color: $primary;
+          }
+          .subtitle {
+            color: $primary;
+          }
+        }
+      }
+    }
+  }
+  .box1 {
+    position: absolute;
+    bottom: -5%;
+    left: -15%;
+    width: 250px;
+    height: 250px;
+    border-radius: 250px;
+    background: #5cd180;
+    filter: blur(100px);
+    z-index: -1;
+  }
+}

@@ -1,0 +1,192 @@
+{% extends '@resources/tiers/_base.twig' %}
+{% block html %}
+
+	{{ use('app/widgets/PageLoader') }}
+	{% set pageLoader = page_loader_widget() %}
+	{{ parent() }}
+{% endblock %}
+{% block body %}
+	{{ 'main-layout' | layoutClass }}
+	{{ pageLoader | raw }}
+	{{ parent() }}
+{% endblock %}
+
+{% set externals = [
+    {
+        'label': 'Facebook',
+		'url': 'social.facebook' | setting('#'),
+    },
+	{
+        'label': 'Linkedin',
+		'url': 'social.linkedin' | setting('#'),
+    },
+	{
+        'label': 'Twiter',
+		'url': 'social.twiter' | setting('#'),
+    },
+	{
+        'label': 'Instagram',
+		'url': 'social.instagram' | setting('#'),
+    },
+] %}
+
+{% block content %}
+	{% if isMobile() or isTablet() %}
+		<div class="mobile-header container">
+			<div class="d-flex justify-content-between pb-2">
+				<a href="/"><img src="public/images/mian.svg" height="70px" width="165px" alt=""></a>
+				{# {{ "" | link('/default/index', {}, {class: 'logo'}) }} #}
+				{{'website/sidemenu' | vue({list : sideMenu(), externals:externals })}}
+			</div>
+		</div>
+	{% else %}
+		<div class="container">
+			<header class="header-wrapper ">
+				<div class="row">
+					<div class="col-md-2">
+						<a href="/">
+							<img src="public/images/mian.svg" width="110%" alt="">
+						</a>
+					</div>
+					<div class="col-md-8">
+						<div class="menu-wrapper">
+							<div class="menu">
+								{{ "About&nbspUs" | link('/default/content',{id:'cms.contents.default.about-us.1'}) }}
+								{{ "Services" | link('/default/contents',{type:'services'}) }}
+								{{ "Projects" | link('/default/contents',{type:'projects'}) }}
+								{{ "Careers" | link('/default/content',{id:'cms.contents.default.careers'}) }}
+								{{ "Contact&nbspUs" | link('/default/content',{id:'cms.contents.default.contact'}) }}
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2 d-flex justify-content-end">
+						<a href="{{ url('/default/content', {id:'cms.contents.default.talk.1'}) }}">
+							<button class="btn-gradient-2">Start&nbsp;Project</button>
+						</a>
+					</div>
+				</div>
+			</header>
+		</div>
+	{% endif %}
+
+	<main class="body-wrapper">
+		{{ content | raw }}
+	</main>
+
+	<div class="footer-wrapper">
+		<div class="container">
+			<div class="row row1">
+				<div class="col-md-4">
+					{% if isMobile() or isTablet() %}
+						<p class="title">Get In touch</p>
+					{% else %}
+						<p class="title">Get</p>
+						<p class="title">In touch</p>
+					{% endif %}
+				</div>
+				<div class="col-md-4">
+					<div class="talk1">
+						{% if  'social.phone' | setting('#') != null %}
+							<p>Provide us with project information and reach out to our team.</p>
+						{% else %}
+							<p style="padding-bottom: 1rem;">Provide us with project information and reach out to our team.</p>
+						{% endif %}
+						<div class="lets-talk">
+							<a href="{{ url('/default/content', {id:'cms.contents.default.talk.1'}) }}">
+								<button class="btn-gradient-2 text-secondary">Let's Talk</button>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					{% if isMobile() or isTablet() %}
+						<div class="footer-menu">
+							{{ "About&nbspUs" | link('/default/content',{id:'cms.contents.default.about-us.1'}, {class:'text-white'}) }}
+							{{ "Services" | link('/default/contents',{type:'services'},{class:'text-white'}) }}
+							{{ "Projects" | link('/default/contents',{type:'projects'},{class:'text-white'}) }}
+							{{ "Careers" | link('/default/content',{id:'cms.contents.default.careers'},{class:'text-white'}) }}
+							{{ "Contact&nbspUs" | link('/default/content',{id:'cms.contents.default.contact'},{class:'text-white'}) }}
+						</div>
+					{% endif %}
+					<div class="social-location">
+						<div class="social">
+							<a target="_blank" href="{{'social.facebook' | setting('#')}}">
+								{{'website/facebook' | vue}}
+							</a>
+							<a target="_blank" href="{{'social.linkedin' | setting('#')}}">
+								{{'website/linkedin' | vue}}
+							</a>
+							<a target="_blank" href="{{'social.twitter' | setting('#')}}">
+								{{'website/twitter' | vue}}
+							</a>
+							<a target="_blank" href="{{'social.instagram' | setting('#')}}">
+								{{'website/instagram' | vue}}
+							</a>
+						</div>
+						{% if isMobile() or isTablet() %}
+							{% else %}
+								{% if 'social.phone' | setting('#') != null %}
+									<div class="location">
+										<img src="public\images\location.svg" alt="">
+										<div class="">
+											<a href="{{'map.link' | setting('#')}}" target="_blank">
+												<p>{{'location.street' | setting('#')}},</p>
+												<p>{{'location.level' | setting('#')}},{{'location.office' | setting('#')}}</p>
+											</a>
+										</div>
+									</div>
+								{% else %}
+									<div class="location" style="padding-top:2rem;">
+										<img src="public\images\location.svg" alt="">
+										<div class="">
+											<a href="{{'map.link' | setting('#')}}" target="_blank">
+												<p>{{'location.street' | setting('#')}},</p>
+												<p>{{'location.level' | setting('#')}},{{'location.office' | setting('#')}}</p>
+											</a>
+										</div>
+									</div>
+								{% endif %}
+								{% if 'social.phone' | setting('#') != null %}
+									<div class="telephone">
+										<img src="public\images\telephone.svg" alt="">
+										<p>
+											<a class="text-white" target="_blank" class="text" href="https://wa.me/{{'social.phone' | setting('#')  | split(' ') | join('')}}">
+												{{'social.phone' | setting('#')}}</a>
+										</p>
+									</div>
+									{% else %}
+
+								{% endif %}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="row footer row2">
+				<div class="col-md-4 col-4">
+					<div class="img">
+						<a href="/">
+							<img src="public/images/logox.svg" alt="">
+						</a>
+					</div>
+				</div>
+				<div class="col-md-4 col-4">
+					{% if isMobile() or isTablet() %}
+						<p class="text-white rights">&copy;Kloutec 2023</p>
+					{% else %}
+						<p class="text-white rights">&copy;All rights reserved Kloutec 2023</p>
+					{% endif %}
+				</div>
+				<div class="col-md-4 col-4">
+					<div class="codendote">
+						<p class="text-white code">Powered by
+							<span class="fw-bold">
+								<a class="text-white" target="_blank" href="https://codendot.com/">&nbsp;Codendot</a>
+							</span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

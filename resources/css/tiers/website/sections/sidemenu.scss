@@ -1,0 +1,122 @@
+$animation-delay-base: 0.1s;
+$animation-delay-increment: 0.1s;
+
+#chahine.closing {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.offcanvas-backdrop.show {
+  opacity: 0 !important;
+}
+
+#sidemenu {
+  display: flex;
+  justify-content: flex-end;
+
+  .btn-side {
+    border: none;
+    font-size: 22px;
+    background-color: $white;
+    padding-right: 0;
+
+    .menu-hamburger {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.offcanvas {
+  //   background-color: rgba(255, 255, 255, 0.84);
+  .icon {
+    opacity: 0;
+    animation: fadeInSlideUp 0.8s 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55)
+      forwards;
+  }
+
+  &.offcanvas-end {
+    &.show {
+      animation: fadeInSlideRight 0.5s cubic-bezier(0.5, -0.5, 1, 1);
+      width: 100%;
+    }
+  }
+
+  .offcanvas-header {
+    background: url("#{$imagesPath}/mian.svg") no-repeat center;
+    background-size: auto 50%;
+    .btn-close {
+      font-size: 22px;
+      padding-top: 2rem;
+      padding-right: 1rem;
+    }
+  }
+
+  .offcanvas-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // padding-left: 2.5rem;
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      padding: 0;
+
+      li {
+        list-style: none;
+        a {
+          text-decoration: none;
+          font-size: 20px;
+          font-weight: bold;
+          // opacity: 0.9;
+        }
+      }
+    }
+  }
+  @keyframes fadeInSlideRight {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInSlideUp {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .nav-menu li a.financing-btn {
+    font-size: 25px;
+  }
+
+  .nav-menu li {
+    opacity: 0;
+    animation: fadeInSlideUp 0.5s 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)
+      forwards;
+
+    // @for $i from 1 through 8 {
+    //     &:nth-child(#{$i}) {
+    //         animation-delay: $animation-delay-base + ($animation-delay-increment * $i);
+
+    //         background-image: linear-gradient(45deg, #0b4d66 50%, #fbdb13 50%);
+    //         background-clip: text;
+    //         -webkit-background-clip: text;
+    //         color: transparent;
+    //     }
+    // }
+  }
+}

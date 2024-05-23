@@ -1,0 +1,135 @@
+{% content "cms.contents.default.services" %}
+<section class="services">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="big-text">
+					<p class="subtitle fw-bolder">
+						{{ content.local.subtitle1 }}
+					</p>
+					<p class="subtitle fw-bolder">
+						{{ content.local.subtitle2 }}
+					</p>
+				</div>
+				<div>
+					<p class="description">
+						{{ content.local.description }}
+					</p>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="img">
+					<img src="{{content.attrs.image.url}}" alt="">
+				</div>
+			</div>
+		</div>
+		<div class="box1"></div>
+		<div class="box2"></div>
+	</div>
+</section>
+{% endcontent %}
+{% contents type='services' %}
+<section class="services-items">
+	<div class="container">
+		<div class="titre">
+			<h2 class="title">ALL SERVICES</h2>
+			<h1 class="subtitle">Solutions To Your Needs.</h1>
+		</div>
+		<div class="row">
+			{% for item in contents %}
+				<div class="col-md-4">
+					<div class="p-card">
+						<div class="inner">
+							<div class="img">
+								<img class="d-flex" src="{{item.attrs.image.url}}" alt="">
+							</div>
+						</div>
+						<div>
+							<p class="text-primary fw-bold project-name">{{item.local.title}}</p>
+						</div>
+						<div class="excerpt">
+							<p class="text-small text-primary">
+								{{item.local.excerpt}}
+							</p>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+			<div class="col-md-4">
+				{% if isMobile() or isTablet() %}
+					<div class="d-flex justify-content-center pt-4">
+						<a href="{{ url('/default/content', {id:'cms.contents.default.talk.1'}) }}">
+							<button class="btn-gradient-2">Start Project</button>
+						</a>
+					</div>
+				{% else %}
+					<div class="last-card">
+						<a href="{{ url('/default/content', {id:'cms.contents.default.talk.1'}) }}">
+							<button class="btn-gradient-2">Start Project</button>
+						</a>
+						<div class="box1"></div>
+					</div>
+				{% endif %}
+			</div>
+			<div class="box2"></div>
+		</div>
+	</div>
+</section>
+{% endcontents %}
+{% contents type='projects' limit="2" %}
+<div class="cont1">
+	<div class="projects">
+		<div class="container">
+			<div class="some-project">
+				<h3 class="title">WHAT WE PROVIDE</h3>
+				<p class="excerpt">Distributed Services sets you up with the best fitting resources and provides an experienced management team, that form a natural extension to your existing in-house team.</p>
+				<div class="subtitles">
+					<h1 class="subtitle">
+						And, at a fraction of the time and
+					</h1>
+					<h1 class="subtitle">cost it would normally take!</h1>
+					<div class="img-arrow">
+						<img src="public\images\white-zigzag.svg" alt="">
+					</div>
+				</div>
+				<h6 class="text-primary">SEE OUR LATEST WORK</h6>
+				<div class="img">
+					<img src="public\images\white-arrow.svg" alt="">
+				</div>
+			</div>
+			<div class="row">
+
+				{% for content in contents %}
+					<div class="col-md-6">
+						<div class="img {{ (loop.index is odd) ? 'd-flex justify-content-start' : 'd-flex justify-content-end' }}">
+							<img src="{{ content.attrs.image.url }}" alt="">
+							<div class="overlay" style="{{ (loop.index is odd) ? 'left: 0;' : 'right: 0;left: inherit;' }}">
+								<div class="title">
+									<h2>{{ content.local.title }}</h2>
+								</div>
+
+								<div class="overlay-items">
+									<div class="item">
+										{% for item in  content.attrs.tags %}
+											{% if loop.index <= 2 %}
+												<p>{{ item.name }}</p>
+											{% endif %}
+										{% endfor %}
+									</div>
+									<div class="item">
+										{% for item in  content.attrs.tags %}
+											{% if loop.index > 2 %}
+												<p>{{ item.name }}</p>
+											{% endif %}
+										{% endfor %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endcontents %}

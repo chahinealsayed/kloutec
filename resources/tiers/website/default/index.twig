@@ -1,0 +1,424 @@
+{{ "Home" | title }}
+{{ seo('home-' ~ language(), this.title, "", [], true) }}
+{% content "cms.contents.default.intro" %}
+
+<section class="section-1">
+	<div class="container">
+		<div class='row'>
+			<div class='col col-12 col-md-6 content'>
+				<div class='cont'>
+					<div class="lined-text">
+						<hr>
+						<h6>Digital Agency</h6>
+					</div>
+					<h1 class="title" style="font-weight: bolder;">{{ content.local.title}}</h1>
+					<h1 class="title green-word" style="font-weight: bolder;">{{ content.local.subtitle1}}</h1>
+					<h1 class="title" style="font-weight: bolder;">{{ content.local.subtitle2}}</h1>
+					<p class="excerpt">{{ content.local.excerpt}}</p>
+					<div class="work">
+						<a href="/Projects">
+							<button class="btn-gradient-2">Check our Work</button>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class='col col-12 col-md-6'>
+				<div class='img'>
+					<img src='{{ content.attrs.image.url}}' alt="">
+				</div>
+			</div>
+		</div>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+	</div>
+</section>
+{% endcontent %}
+
+{% content "cms.contents.default.businesses" %}
+{% if isMobile() or isTablet() %}
+	<section class="section-2">
+		<div class="container">
+			<div class="spacing">
+				<div>
+					<h1 class="businesse">{{content.local.title}}</h1>
+				</div>
+				<div class="swiper swiper-container" style="height: 100px;">
+					<div class="swiper-wrapper">
+						{% for image in content.attrs.gallery %}
+							<div class="swiper-slide" style="background:transparent !important;">
+								<div class="images d-flex justify-content-center">
+									<div>
+										<img class="image" src="{{ image.url }}" alt=""/>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+					<div class="swiper-pagination" style="top:80% !important"></div>
+					<div class="swiper-button-next" style="top:80% !important"></div>
+					<div class="swiper-button-prev" style="top:80% !important"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% else %}
+	<section class="section-2" data-aos="fade-up" data-aos-duration="500">
+		<div class="container">
+			<div class="spacing">
+				<div>
+					<h1 class="businesse">{{content.local.title}}</h1>
+				</div>
+				<div class="images">
+					{% for image in content.attrs.gallery %}
+						<div>
+							<img class="image" src="{{ image.url }}" alt=""/>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</section>
+{% endif %}
+{% endcontent %}
+
+
+{% content "cms.contents.default.about" %}
+<section class="section-about" data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+	<div class="container">
+		<div class="items">
+			<h4 class="title  green-word" style="font-weight: 300;">{{ content.local.title}}</h4>
+			<p class="title subtitle1" style="font-weight: bolder;">{{ content.local.subtitle1  }}</p>
+			<div class="positions">
+				<p class="title subtitle2" style="font-weight: bolder;">{{ content.local.subtitle2}}</p>
+				<div class="img">
+					<img src="public\images\zigzag.svg" alt="">
+				</div>
+			</div>
+			<p class="excerpt pb-3">{{ content.local.excerpt}}</p>
+			<p class="fw-bolder m-0">Explore</p>
+			<div class="img2 pt-3">
+				<img class="arrow" src="public\images\arrow-down.svg" alt="">
+			</div>
+		</div>
+		<div class="box-services"></div>
+	</div>
+</section>
+{% endcontent %}
+
+
+{% content "cms.contents.default.services" %}
+<section class="section-services">
+	<div class="container">
+		<div>
+			<h1 class="fw-bolder">{{content.local.title}}</h1>
+		</div>
+		<div class="excerpt-button">
+			<p class="fw-bold excerpt">{{content.local.excerpt | nl2br}}</p>
+			<div>
+				<a href="/default/contents?type=services">
+					<button class="btn-gradient-2">What we do</button>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% contents type="services" limit='9' %}
+<section>
+	<div class="container pt-4">
+		<div class="swiper swiper-container">
+			<div class="swiper-wrapper">
+				{% for content in contents %}
+					<div class="swiper-slide">
+						<a href="/Services" style="text-decoration: none;">
+							<div class="p-card">
+								<div class="img">
+									<img class="d-flex" src="{{content.attrs.image.url}}" alt="">
+								</div>
+								<div>
+									<p class="text-primary fw-bold project-name">{{content.local.title}}</p>
+								</div>
+								<div class="excerpt">
+									<p class="text-small text-primary">
+										{{content.local.excerpt}}
+									</p>
+								</div>
+								<div class="arrow">
+									<img src="public\images\Arrow.svg" alt="">
+								</div>
+							</div>
+						</a>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="swiper-pagination"></div>
+			<div class="swiper-button-next"></div>
+			<div class="swiper-button-prev"></div>
+		</div>
+	</div>
+</section>
+{% endcontents %}
+
+{% endcontent %}
+
+{% content "cms.contents.default.project" %}
+<section class="section-project">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="top">
+					<h1 class="fw-bolder text-secondary">{{content.local.title}}</h1>
+				</div>
+				<div class="circle-data">
+					<div class="circles">
+						{% contents type='projects' limit='4' %}
+						{% for content in contents %}
+							<div class="circle" onclick="toggleData({{loop.index}})"></div>
+						{% endfor %}
+						{% endcontents %}
+					</div>
+					<div>
+						{% contents type='projects' limit='4' %}
+						{% for content in contents %}
+							<div class="data" id="data{{loop.index}}">
+								<h4 class="text-secondary fw-bold">
+									0{{loop.index}}
+								</h4>
+								<h4 class="text-primary fw-bold">{{ content.local.title }}</h4>
+								<p class="description">{{content.local.description}}</p>
+								<a href="/default/contents?type=projects">
+									<button class="btn-gradient-2 text-secondary">View Project</button>
+								</a>
+							</div>
+						{% endfor %}
+						{% endcontents %}
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="img">
+					<img src='{{ content.attrs.image.url}}' alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endcontent %}
+
+
+{% if isMobile() or isTablet() %}
+	{% content "cms.contents.default.reviews" %}
+	<section class="section-reviews container">
+		<div class="container">
+			<div class="text-center simle">
+				<span class="text-primary love fw-bold">{{content.local.excerpt}}
+					😍</span>
+			</div>
+			<div>
+				<h1 class="fw-bolder text-primary text-center">{{content.local.title}}</h1>
+			</div>
+		</div>
+		{% contents type='reviews' %}
+		<div class="swiper swiper-container" style="height: 250px;margin-top:1rem">
+			<div class="swiper-wrapper">
+				{% for content in contents %}
+					<div class="swiper-slide" style="background:transparent !important;display:flex;align-items:start;">
+						<div class="comments-card" data-aos="fade-up" data-aos-duration="500" data-aos-delay="{{t}}">
+							<div class="stars d-flex">
+								{% set fullStars = content.attrs.stars|round(0, 'floor') %}
+								{% set halfStar = content.attrs.stars - fullStars %}
+								{% set emptyStars = 5 - fullStars - (halfStar > 0 ? 1 : 0) %}
+
+								{% for i in 1..fullStars %}
+									<web-icon class="color-star" path="mdiStar" style="height: 20px;"></web-icon>
+								{% endfor %}
+
+								{% if halfStar > 0 %}
+									<web-icon class="color-star" path="mdiStarHalf" style="height: 20px;"></web-icon>
+								{% endif %}
+								{% if emptyStars > 0 %}
+									{% for i in 1..emptyStars %}
+										<web-icon class="color-star" path="mdiStarOutline" style="height: 20px;"></web-icon>
+									{% endfor %}
+								{% endif %}
+							</div>
+							<div class="cards-content">
+								<p class="description">
+									{{content.local.excerpt}}
+								</p>
+							</div>
+							<div class="person-specialist">
+								<div class="rating-container">
+									<div class="p-img">
+										<img src="{{content.attrs.image.url}}" alt="">
+									</div>
+									<div class="p-name">
+										<p class="name">
+											{{content.local.title}}
+										</p>
+									</div>
+								</div>
+								<div>
+									<p class="specialist">
+										{{content.attrs.specialist}}
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="swiper-pagination" style="top:80% !important"></div>
+			<div class="swiper-button-next" style="top:80% !important"></div>
+			<div class="swiper-button-prev" style="top:80% !important"></div>
+		</div>
+		{% endcontents %}
+	</section>
+	{% endcontent %}
+{% else %}
+	{% content "cms.contents.default.reviews" %}
+	<section class="section-reviews">
+		<div class="container">
+			<div class="text-center simle">
+				<span class="text-primary love fw-bold">{{content.local.excerpt}}
+					😍</span>
+			</div>
+			<div>
+				<h1 class="fw-bolder text-primary text-center">{{content.local.title}}</h1>
+			</div>
+		</div>
+		{% contents type='reviews' %}
+		<div class="clients-comments">
+			<div class="row">
+				{% set t = 0 %}
+				{% for content in contents|slice(0, 3) %}
+					<div class="col-md-3">
+						<div class="comments-card" data-aos="fade-up" data-aos-duration="500" data-aos-delay="{{t}}">
+							<div class="stars">
+								{% set fullStars = content.attrs.stars|round(0, 'floor') %}
+								{% set halfStar = content.attrs.stars - fullStars %}
+								{% set emptyStars = 5 - fullStars - (halfStar > 0 ? 1 : 0) %}
+
+								{% for i in 1..fullStars %}
+									<web-icon class="color-star" path="mdiStar" style="height: 20px;"></web-icon>
+								{% endfor %}
+
+								{% if halfStar > 0 %}
+									<web-icon class="color-star" path="mdiStarHalf" style="height: 20px;"></web-icon>
+								{% endif %}
+								{% if emptyStars > 0 %}
+									{% for i in 1..emptyStars %}
+										<web-icon class="color-star" path="mdiStarOutline" style="height: 20px;"></web-icon>
+									{% endfor %}
+								{% endif %}
+							</div>
+							<div class="cards-content">
+								<p class="description">
+									{{content.local.excerpt}}
+								</p>
+							</div>
+							<div class="person-specialist">
+								<div class="rating-container">
+									<div class="p-img">
+										<img src="{{content.attrs.image.url}}" alt="">
+									</div>
+									<div class="p-name">
+										<p class="name">
+											{{content.local.title}}
+										</p>
+									</div>
+								</div>
+								<div>
+									<p class="specialist">
+										{{content.attrs.specialist}}
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% set t = t + 200 %}
+				{% endfor %}
+			</div>
+			<div class="row">
+				{% for content in contents|slice(3) %}
+					<div class="col-md-3">
+						<div class="comments-card" data-aos="fade-up" data-aos-duration="500" data-aos-delay="{{t}}">
+							<div class="stars">
+								{% set fullStars = content.attrs.stars|round(0, 'floor') %}
+								{% set halfStar = content.attrs.stars - fullStars %}
+								{% set emptyStars = 5 - fullStars - (halfStar > 0 ? 1 : 0) %}
+
+								{% for i in 1..fullStars %}
+									<web-icon class="color-star" path="mdiStar" style="height: 20px;"></web-icon>
+								{% endfor %}
+
+								{% if halfStar > 0 %}
+									<web-icon class="color-star" path="mdiStarHalf" style="height: 20px;"></web-icon>
+								{% endif %}
+								{% if emptyStars > 0 %}
+									{% for i in 1..emptyStars %}
+										<web-icon class="color-star" path="mdiStarOutline" style="height: 20px;"></web-icon>
+									{% endfor %}
+								{% endif %}
+							</div>
+							<div class="cards-content">
+								<p class="description">
+									{{content.local.excerpt}}
+								</p>
+							</div>
+							<div class="person-specialist">
+								<div class="rating-container">
+									<div class="p-img">
+										<img src="{{content.attrs.image.url}}" alt="">
+									</div>
+									<div class="p-name">
+										<p class="name">
+											{{content.local.title}}
+										</p>
+									</div>
+								</div>
+								<div>
+									<p class="specialist">
+										{{content.attrs.specialist}}
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% set t = t + 200 %}
+				{% endfor %}
+			</div>
+			<div class="box1"></div>
+			<div class="box2"></div>
+		</div>
+		{% endcontents %}
+	</section>
+	{% endcontent %}
+{% endif %}
+
+
+<script>
+	function toggleData(circleNumber) {
+var dataElements = document.querySelectorAll('.data');
+for (var i = 0; i < dataElements.length; i++) {
+dataElements[i].classList.remove('active');
+}
+
+var dataElement = document.getElementById('data' + circleNumber);
+if (dataElement) {
+dataElement.classList.add('active');
+}
+
+var circles = document.querySelectorAll('.circle');
+for (var i = 0; i < circles.length; i++) {
+circles[i].classList.remove('active');
+}
+
+var circle = document.querySelector('.circle:nth-child(' + circleNumber + ')');
+if (circle) {
+circle.classList.add('active');
+}
+}
+toggleData(1);
+</script>

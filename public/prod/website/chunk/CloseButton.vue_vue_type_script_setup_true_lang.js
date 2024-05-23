@@ -1,0 +1,1 @@
+import{d as t,l as s,q as o,u as n}from"./mc55b2a42316522d6.js";const c=t({inheritAttrs:!1,__name:"CloseButton",setup(a){return(e,r)=>(s(),o("button",n({type:"button",class:"btn-close","aria-label":"Close"},e.$attrs),null,16))}});export{c as _};

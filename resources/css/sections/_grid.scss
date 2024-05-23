@@ -1,0 +1,17 @@
+$columns: 10, 12, 14;
+
+@each $column in $columns {
+  .row-#{$column} {
+    --bs-gutter-x: 0.8rem !important;
+    @include make-row();
+    min-width: 100%;
+    > * {
+      @include make-col-ready();
+    }
+    @include make-grid-columns($column);
+  }
+}
+
+.row-ltr {
+  direction: ltr !important;
+}

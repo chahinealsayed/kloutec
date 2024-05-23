@@ -1,0 +1,92 @@
+{% content "cms.contents.default.careers" %}
+<section class="career">
+	<div class="container">
+		<div class="detail">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="lined-text">
+						<hr>
+						<h6>{{content.local.title}}</h6>
+					</div>
+					<p class="title">{{content.local.subtitle1}}</p>
+					<p class="title">{{content.local.subtitle2}}</p>
+					<p class="excerpt">{{content.local.excerpt}}</p>
+				</div>
+			</div>
+			<div class="box1"></div>
+			<div class="box2"></div>
+		</div>
+	</div>
+</section>
+{% endcontent %}
+<section class="bg">
+	<div class="container">
+		<div class="circle" id="circle" draggable="false">
+			<div class="circle-img" draggable="false">
+				<img src="public\images\Circle-Text.svg" alt="" draggable="false">
+				<div class="white-arrow" draggable="false">
+					<img src="public\images\white-arrow.svg" alt="" draggable="false">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="inner">
+					<h1 class="text-white">Benefits you get</h1>
+					<h1 class="text-primary">Easier life with Kloutec</h1>
+					<p class="excerpt">We understand that work is just one aspect of life. At Kloutec, we strive to create the best and most enjoyable working experience possible, helping you grow personally during your journey towards excellence.</p>
+				</div>
+			</div>
+		</div>
+		{% for item in content.attrs.cont %}
+			<div class="items">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="repeater">
+							<div class="outer">
+								<div class="show">
+									<div>
+										<h4 class="text-white">{{item.title}}</h4>
+									</div>
+									<div class="img">
+										<img src="public\images\white-arrow.svg" alt="" class="toggle-arrow">
+									</div>
+								</div>
+							</div>
+							<div class="hidden">
+								<p>{{item.description}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</section>
+
+<section>
+	{{'website/careers' | vue()}}
+</section>
+
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+const outerDivs = document.querySelectorAll(".outer");
+
+outerDivs.forEach(function (outerDiv) {
+outerDiv.addEventListener("click", function () {
+const parentDiv = outerDiv.closest(".repeater");
+const hiddenDiv = parentDiv.querySelector(".hidden");
+const arrow = outerDiv.querySelector(".toggle-arrow");
+
+if (hiddenDiv.style.display === "none" || hiddenDiv.style.display === "") {
+hiddenDiv.style.display = "block";
+arrow.style.transform = "rotate(-180deg)";
+} else {
+hiddenDiv.style.display = "none";
+arrow.style.transform = "rotate(5deg)";
+}
+});
+});
+});
+</script>

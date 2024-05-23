@@ -1,0 +1,33 @@
+.cont {
+  .items {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    .item {
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+      // flex-direction: column;
+
+      @media (max-width: 767px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      span {
+        color: $primary;
+      }
+      &:nth-child(2) {
+        border-left: 1px solid $primary;
+        border-right: 1px solid $primary;
+        padding-left: 4rem;
+        padding-right: 4rem;
+        @media (max-width: 767px) {
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+<section class="project-intro">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="big-text">
+					{% if isMobile() or isTablet() %}
+						<p class="subtitle fw-bolder">
+							Our Projects
+						</p>
+					{% else %}
+						<p class="subtitle fw-bolder">
+							Our
+						</p>
+						<p class="subtitle fw-bolder">
+							Projects
+						</p>
+					{% endif %}
+					<div class="img">
+						<img src="public\images\long-arrow.svg" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6"></div>
+			<div class="col-md-6">
+				<div class="desc">
+					<p class="description">
+						We are what we create. Take a look at our latest projects that span various industries - this is our very own hall of fame.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="box1"></div>
+		<div class="box2"></div>
+	</div>
+</section>
+
+
+<section>
+	{{'website/projects' | vue()}}
+</section>

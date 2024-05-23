@@ -1,0 +1,56 @@
+{% content "cms.contents.default.talk.1" %}
+<section class="talk">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="lined-text">
+					<hr>
+					<h6>Let's Talk Now</h6>
+				</div>
+				<p class="title">{{content.local.title}}</p>
+				<p class="title">{{content.local.subtitle1}}</p>
+				<div class="arrow-btn">
+					<div class="btn btn-secondary dream">
+						<span id="myButton" class="animate">Project</span>
+						<span id="myButton" class="animate">Dream</span>
+						<span id="myButton" class="animate">Journey</span>
+						<span id="myButton" class="animate">Imagin'</span>
+					</div>
+					<div class="img">
+						<img src="public\images\arrow-down.svg" alt="">
+					</div>
+				</div>
+
+			</div>
+			<div class="col-md-6"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-6"></div>
+			<div class="col-md-6">
+				<p class="excerpt">{{content.local.excerpt}}</p>
+			</div>
+		</div>
+		<div class="box1"></div>
+		<div class="box2"></div>
+	</div>
+</section>
+{% endcontent %}
+
+
+{% content "cms.contents.default.talk.2" %}
+<section class="form">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="cont">
+					<p class="title">{{content.local.title}}</p>
+					<p class="subtitle">{{content.local.subtitle1}}</p>
+				</div>
+			</div>
+			<div class="col-md-6"></div>
+		</div>
+		{{'website/contactform' | vue}}
+		<div class="box1"></div>
+	</div>
+</section>
+{% endcontent %}
